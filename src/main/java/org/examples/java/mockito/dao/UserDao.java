@@ -53,6 +53,18 @@ public class UserDao implements IUserDao {
 		
 		return query.getResultList();
 	}
+
+	/**
+	 * Get user by ID
+	 */
+	public User getUserById(Long userId) {
+
+		Query query = em.createQuery("From User where id = :id", User.class);
+		query.setParameter("id", userId);
+		
+		return (User) query.getSingleResult();
+		
+	}
 	
 	
 	

@@ -18,4 +18,6 @@ public interface IUserDao {
 	 */
 	List<User> getUsers();
 
+	User getUserById(Long userId);
+
 }

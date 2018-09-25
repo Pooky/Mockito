@@ -27,11 +27,24 @@ public class UserService implements IUserService {
 	/**
 	 * Calculate and save user age
 	 * @param user
-	 * @param userAge
+	 * @param bornDate
 	 */
-	public void calculateAndSaveUserAge(User user, LocalDate userAge) {
+	public void calculateAndSaveUserAge(Long userId, LocalDate bornDate) {
 		
+		Integer age;
+		// If generation X use age is 20
+		if(bornDate.isAfter(LocalDate.of(2000, 12, 12))) {
+			age = 20;
+		}else {
+			age = 99;
+		}
 		
+		// Get user and save it
+		User user = dao.getUserById(userId);
+		// set age
+		user.setAge(age);
+		// save user
+		saveUser(user);
 		
 	}
 	
