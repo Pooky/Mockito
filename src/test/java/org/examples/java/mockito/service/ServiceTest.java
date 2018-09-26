@@ -8,6 +8,7 @@ import org.examples.java.service.IUserService;
 import org.examples.java.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -15,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,9 +42,18 @@ public class ServiceTest {
 		
 		service.calculateAndSaveUserAge(15L, LocalDate.of(1999, 12, 12));
 		
+		// Catch dao argument
+		ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+		
+		
 		// Verify call
 		verify(dao, times(1)).getUserById(15L);
-		verify(dao, times(1)).saveUser(user);
+		verify(dao, times(1)).saveUser(userCaptor.capture());
+		
+		// Compare user captured and user which we inserted
+		assertEquals(user,  userCaptor.getValue());
+		
+		
 		
 		
 	}
