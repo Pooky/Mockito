@@ -4,17 +4,17 @@ Mockito is framework which helps you to test and mock your objects.
 
 Why you need to write tests
 ------------------------
-When you test something you wish to know, if the code which you wrote is correct. 
+When you test something you wish to know that the code which you wrote is correct. 
 
-For that you need to write some tests and cover simple cases (examples) where result should be what you assume. In tests you can never test everything but basicaly the rule is that you should test atleast something to see if it fail or not. 
+For that you need to write some tests and cover simple use cases (examples) where result should be what you assume when you wrote this code. In reality you can never test everything but basicaly the rule is that you should test atleast something general to see if it fail or not. 
 
-The more complex logic the more tests you should write. To test some complex code is not trivial and for that here is framework which should you help to do that. 
+The more complex logic the more tests you should write. To test some complex code is not trivial and for that here is very nice framework Mockito which should help you to do that nice and elegant. 
 
 Description of Mockito Example
 ----------------------
 
 In example bellow you can see that we wanna to test class **UserService**. 
-Our service use DAO object (Data Access Object) to access and get information from database. In this case our service will find user according to the ID provided by parameter and then fetch the user from DB, calculate age and update it. 
+Our service use DAO object (Data Access Object) to access and get information from database. In this case our service will find user according to the ID provided by parameter and then fetch the user from database, calculate age and update it. 
 
 In this test we don't have access to database instance and we wanna to control, what is returned to the service. So we mock the **UserDao** object and when the method **getUserById** is called with our parameter we will return object, which we prepared before - the **User object**.
 

@@ -1,5 +1,6 @@
 package org.examples.java.mockito.service;
 
+import java.nio.channels.AsynchronousCloseException;
 import java.time.LocalDate;
 
 import org.examples.java.mockito.dao.UserDao;
@@ -53,6 +54,8 @@ public class ServiceTest {
 		// Compare user captured and user which we inserted
 		assertEquals(user,  userCaptor.getValue());
 		
+		// Check age we have it should be 99
+		assertEquals(Integer.valueOf(99), user.getAge());
 		
 		
 		
